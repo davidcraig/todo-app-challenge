@@ -26,7 +26,7 @@ export function TaskList({
 
   return (
     <>
-      <table>
+      <table data-testid="task-list">
         <thead>
           <tr>
             <th>Title</th>
@@ -35,7 +35,7 @@ export function TaskList({
             <th className="actions">Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-testid="task-list-body">
           {filteredTasks.map((task) => {
             return (
               <tr
