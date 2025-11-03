@@ -1,11 +1,12 @@
 @import "tailwindcss";
+@import "./tables.css";
 
 @layer base {
     :root {
         @apply text-[#131313] bg-[#ececec] font-sans;
         --h2: #005aa4;
-        --button-bg: #4299e1;
-        --button-hover: #3182ce;
+        --primary-color: #4299e1;
+        --secondary-color: #3182ce;
         --button-active-bg: #2c71b4;
     }
 
@@ -22,12 +23,12 @@
     button.save {
         @apply focus:ring-[#4299e1];
 
-        background: var(--button-active-bg);
+        background: var(--primary-color);
         &:hover {
-            background: var(--button-hover);
+            background: var(--secondary-color);
         }
         &:active {
-            background: var(--button-active-bg);
+            background: var(--primary-color);
         }
     }
 
@@ -55,7 +56,7 @@
         @apply my-2;
     }
 
-    input[type="checkbox"] {
+    #add-task-form input[type="checkbox"] {
         @apply ml-4;
     }
 
@@ -89,5 +90,15 @@
         #layout-container {
             grid-template-columns: 1fr;
         }
+    }
+
+    /* TaskList */
+    .actions {
+        width: 5em;
+    }
+
+    .actions button {
+        padding: 0.25rem;
+        margin: 0.5rem 0;
     }
 }

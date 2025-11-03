@@ -18,47 +18,30 @@ export function TaskList({
   handleDelete,
 }: TaskListProps) {
   // Group tasks by category
-  const groupedTasks = ObjectSortByKeys(
-    tasks.reduce(
-      (acc, task) => {
-        const category = task.category;
-        acc[category] = acc[category] || [];
-        acc[category].push(task);
-        return acc;
-      },
-      {} as Record<string, Task[]>,
-    ),
-  );
-
-  console.log(groupedTasks);
-
-  if (!groupedTasks) return null;
 
   return (
     <>
-      {Object.keys(groupedTasks).map((category) => {
-        const categoryTitle = ucFirst(category);
-        const categoryTasks = groupedTasks[category];
-
-        if (!categoryTasks || !categoryTasks.length) return null;
-
-        return (
-          <div
-            aria-label={`${categoryTitle} Category Todo Items`}
-            key={category}
-          >
-            <h2 id={`${category}-category`}>{categoryTitle}</h2>
-            <ul>
-              {categoryTasks.map((task: Task) => (
-                <li className="flex items-center" key={task.id}>
-                  <span
-                    style={{
-                      textDecoration: task.completed ? "line-through" : "none",
-                    }}
-                  >
-                    {task.title}
-                  </span>
-
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Completed</th>
+            <th className="actions">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tasks.map((task) => {
+            return (
+              <tr
+                style={{
+                  textDecoration: task.completed ? "line-through" : "",
+                }}
+                key={task.id}
+              >
+                <td>{task.title}</td>
+                <td>{ucFirst(task.category)}</td>
+                <td>
                   <input
                     type="checkbox"
                     data-testid={`complete-todo-checkbox-${task.id}`}
@@ -66,7 +49,9 @@ export function TaskList({
                     onChange={toggleComplete(task.id)}
                     aria-label={`Complete todo ${task.title}`}
                   />
+                </td>
 
+                <td className="actions">
                   <button
                     data-testid={`delete-todo-button-${task.id}`}
                     className="delete flex"
@@ -75,12 +60,12 @@ export function TaskList({
                   >
                     <img src={binIcon} alt={`Delete todo ${task.title}`} />
                   </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        );
-      })}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </>
   );
 }

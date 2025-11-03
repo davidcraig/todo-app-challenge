@@ -1,0 +1,46 @@
+@layer base {
+    :root {
+        --table-border-radius: 0.4rem;
+    }
+
+    table {
+        @apply w-full;
+    }
+
+    th {
+        text-align: left;
+        background: var(--primary-color);
+        padding: 0.5rem 0;
+
+        &:first-child {
+            padding-left: 0.5rem;
+        }
+        &:last-child {
+            padding-right: 0.5rem;
+        }
+    }
+
+    thead tr th {
+        &:first-child {
+            border-top-left-radius: var(--table-border-radius);
+        }
+        &:last-child {
+            border-top-right-radius: var(--table-border-radius);
+        }
+        overflow: hidden;
+    }
+
+    th,
+    td {
+    }
+
+    tr {
+        &:first-of-type(td) {
+            padding-left: 0.5rem;
+        }
+    }
+
+    td {
+        background: #fff;
+    }
+}

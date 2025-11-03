@@ -1,4 +1,5 @@
 import "./index.css";
+import "./tables.css";
 import { useState, useEffect } from "react";
 import type { Task } from "./Types/Task";
 
@@ -57,7 +58,6 @@ export function App() {
   }, []);
 
   function onAddTask(task: Task) {
-    task.id = crypto.randomUUID();
     const newTasks = [...tasks, task];
     localStorage.setItem(DEFAULT_CATEGORY_KEY, task.category);
     localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(newTasks));

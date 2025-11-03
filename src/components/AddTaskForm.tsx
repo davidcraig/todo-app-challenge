@@ -4,6 +4,7 @@ import type { TaskFormProps } from "../Types/Task";
 export function AddTaskForm({ onAddTask, defaultCategory }: TaskFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [newTask, setNewTask] = useState({
+    id: crypto.randomUUID(),
     title: "",
     category: "work",
     completed: false,
@@ -23,6 +24,7 @@ export function AddTaskForm({ onAddTask, defaultCategory }: TaskFormProps) {
 
   const resetForm = () => {
     setNewTask({
+      id: crypto.randomUUID(),
       title: "",
       category: defaultCategory,
       completed: false,
@@ -55,6 +57,7 @@ export function AddTaskForm({ onAddTask, defaultCategory }: TaskFormProps) {
             type="text"
             data-testid="add-task-component-description"
             className="input"
+            required
             minLength={3}
             value={newTask.title}
             onChange={handleTitleChange}
