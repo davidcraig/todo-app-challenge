@@ -10,7 +10,8 @@ export function TaskListFilter({
   return (
     <select
       aria-label="Task Category Filter"
-      style={{ marginLeft: "auto", maxWidth: "30%" }}
+      className="md:w-4/12"
+      style={{ marginLeft: "auto" }}
       onChange={(e) => setSelectedCategory(e.target.value)}
     >
       <option value="all">All</option>

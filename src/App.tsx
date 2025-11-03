@@ -121,7 +121,7 @@ export function App() {
           </aside>
 
           <main aria-labelledby="task-list-heading">
-            <div className="flex">
+            <div className="flex flex-col md:flex-row">
               <h1 id="task-list-heading">Tasks</h1>
               <TaskListFilter
                 categories={CATEGORIES}
