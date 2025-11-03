@@ -54,16 +54,9 @@ export function App() {
 
       <h1 className="text-5xl font-bold my-4 leading-tight">TODO App</h1>
 
-      <div
-        id="layout-container"
-        style={{
-          display: "grid",
-          gap: "2rem",
-          gridTemplateColumns: "80% 1fr",
-        }}
-      >
+      <div id="layout-container">
         <main>
-          <h1>Tasks</h1>
+          <h1>Task List</h1>
 
           <TaskList
             tasks={tasks}

@@ -44,10 +44,10 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
   };
 
   return (
-    <div className="">
+    <div id="add-task-form">
       <h1>Add Task</h1>
 
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <form className="flex flex-col" ref={formRef} onSubmit={handleSubmit}>
         <label>
           Task Description:
           <input
@@ -85,7 +85,7 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
         </label>
 
         <button type="submit" className="save mt-4">
-          Save Task
+          Add Task
         </button>
       </form>
     </div>

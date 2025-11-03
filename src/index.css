@@ -75,4 +75,23 @@
         @apply text-xl font-semibold my-2;
         color: var(--h2);
     }
+
+    #layout-container {
+        @apply grid gap-4;
+        grid-template-columns: 8fr 2fr;
+    }
+
+    @media (max-width: 768px) {
+        #layout-container {
+            grid-template-columns: 1fr;
+        }
+
+        #layout-container aside {
+            order: 1;
+        }
+
+        #layout-container main {
+            order: 2;
+        }
+    }
 }
