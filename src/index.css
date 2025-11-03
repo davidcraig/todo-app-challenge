@@ -109,7 +109,6 @@
     }
 
     /* TaskList */
-
     .actions {
         width: 5em;
     }
@@ -117,5 +116,13 @@
     .actions button {
         padding: 0.25rem;
         margin: 0.5rem 0;
+    }
+
+    .completed {
+        width: 8em;
+    }
+
+    .category {
+        width: 10em;
     }
 }

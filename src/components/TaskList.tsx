@@ -25,8 +25,8 @@ export function TaskList({
         <thead>
           <tr>
             <th>Title</th>
-            <th>Category</th>
-            <th>Completed</th>
+            <th className="category">Category</th>
+            <th className="completed">Completed</th>
             <th className="actions">Actions</th>
           </tr>
         </thead>
@@ -40,8 +40,8 @@ export function TaskList({
                 key={task.id}
               >
                 <td>{task.title}</td>
-                <td>{ucFirst(task.category)}</td>
-                <td>
+                <td className="category">{ucFirst(task.category)}</td>
+                <td className="completed">
                   <input
                     type="checkbox"
                     data-testid={`complete-todo-checkbox-${task.id}`}
