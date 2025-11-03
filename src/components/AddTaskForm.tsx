@@ -52,6 +52,7 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
           Task Description:
           <input
             type="text"
+            data-testid="add-task-component-description"
             className="input"
             minLength={3}
             value={newTask.description}
@@ -62,7 +63,7 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
         <label>
           Task Category:
           <select
-            data-testid="category-select"
+            data-testid="add-task-component-category-select"
             value={newTask.category}
             onChange={handleCategoryChange}
           >
@@ -77,14 +78,18 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
         <label>
           Completed?:
           <input
-            id="addTaskForm-completed"
+            data-testid="add-task-component-completed-checkbox"
             type="checkbox"
             checked={newTask.completed}
             onChange={handleCompletedChange}
           />
         </label>
 
-        <button type="submit" className="save mt-4">
+        <button
+          data-testid="add-task-component-submit-button"
+          type="submit"
+          className="save mt-4"
+        >
           Add Task
         </button>
       </form>

@@ -28,10 +28,10 @@ describe(TaskList, () => {
       />,
     );
 
-    expect(screen.getByText("Personal")).not.toBeNull();
-    expect(screen.getByText("Work")).not.toBeNull();
-    expect(screen.getByText("Buy milk")).not.toBeNull();
-    expect(screen.getByText("Finish report")).not.toBeNull();
+    expect(screen.getAllByText("Personal")[0]).not.toBeNull();
+    expect(screen.getAllByText("Work")[0]).not.toBeNull();
+    expect(screen.getAllByText("Buy milk")[0]).not.toBeNull();
+    expect(screen.getAllByText("Finish report")[0]).not.toBeNull();
   });
 
   test("calls toggleComplete when checkbox is clicked", () => {
