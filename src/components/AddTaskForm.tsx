@@ -62,7 +62,7 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
         <label>
           Task Category:
           <select
-            id="category-select"
+            data-testid="category-select"
             value={newTask.category}
             onChange={handleCategoryChange}
           >
