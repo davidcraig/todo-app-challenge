@@ -69,6 +69,13 @@ export function TaskList({
               </tr>
             );
           })}
+          {filteredTasks.length == 0 && (
+            <tr>
+              <td className="p-4" colSpan={4}>
+                No tasks found
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>
