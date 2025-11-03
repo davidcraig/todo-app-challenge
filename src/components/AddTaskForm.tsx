@@ -84,7 +84,7 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
           />
         </label>
 
-        <button type="submit" className="save">
+        <button type="submit" className="save mt-4">
           Save Task
         </button>
       </form>
