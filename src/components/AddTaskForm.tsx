@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import type { TaskFormProps } from "../Types/Task";
+import ucFirst from "@/util/ucFirst";
 
 export function AddTaskForm({
   onAddTask,
@@ -84,7 +85,7 @@ export function AddTaskForm({
           >
             {categories.map((category) => (
               <option key={category} value={category}>
-                {category}
+                {ucFirst(category)}
               </option>
             ))}
           </select>
