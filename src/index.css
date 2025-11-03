@@ -3,6 +3,9 @@
 @layer base {
     :root {
         @apply text-[#131313] bg-[#ececec] font-sans;
+        --button-bg: #4299e1;
+        --button-hover: #3182ce;
+        --button-active-bg: #2c71b4;
     }
 
     body {
@@ -10,12 +13,32 @@
     }
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    opacity: 0.05;
-    background-size: 256px;
-    pointer-events: none;
+@layer components {
+    button {
+        @apply text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2;
+    }
+
+    button.save {
+        @apply focus:ring-[#4299e1];
+
+        background: var(--button-active-bg);
+        &:hover {
+            background: var(--button-hover);
+        }
+        &:active {
+            background: var(--button-active-bg);
+        }
+    }
+
+    input {
+        @apply border border-gray-300 w-full rounded-md px-2 py-1 mb-4;
+    }
+
+    select {
+        @apply border border-gray-300 w-full rounded-md px-2 py-1 mb-4;
+    }
+
+    h1 {
+        @apply text-2xl font-bold my-4;
+    }
 }
