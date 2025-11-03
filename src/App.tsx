@@ -6,9 +6,11 @@ import AddTaskForm from "./components/AddTaskForm";
 import TaskList from "./components/TaskList";
 
 const TASKS_STORAGE_KEY = "tasks";
+const DEFAULT_CATEGORY_KEY = "default_category";
 
 export function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [defaultCategory, setDefaultCategory] = useState<string>("work");
 
   function loadTasks() {
     // Load tasks from API or local storage
@@ -19,6 +21,13 @@ export function App() {
       if (parsedTasks.length > 0) {
         setTasks(parsedTasks);
       }
+    }
+  }
+
+  function loadDefaultCategory() {
+    const category = localStorage.getItem(DEFAULT_CATEGORY_KEY);
+    if (category) {
+      setDefaultCategory(category);
     }
   }
 
@@ -44,11 +53,13 @@ export function App() {
 
   useEffect(() => {
     loadTasks();
+    loadDefaultCategory();
   }, []);
 
   function onAddTask(task: Task) {
     task.id = crypto.randomUUID();
     const newTasks = [...tasks, task];
+    localStorage.setItem(DEFAULT_CATEGORY_KEY, task.category);
     localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(newTasks));
 
     setTasks(newTasks);
@@ -59,6 +70,13 @@ export function App() {
       <h1 className="text-5xl font-bold my-4 leading-tight">TODO App</h1>
 
       <div id="layout-container">
+        <aside aria-label="Add Task Form">
+          <AddTaskForm
+            onAddTask={onAddTask}
+            defaultCategory={defaultCategory}
+          ></AddTaskForm>
+        </aside>
+
         <main aria-labelledby="task-list-heading">
           <h1 id="task-list-heading">Task List</h1>
 
@@ -68,10 +86,6 @@ export function App() {
             handleDelete={handleDelete}
           ></TaskList>
         </main>
-
-        <aside aria-label="Add Task Form">
-          <AddTaskForm onAddTask={onAddTask}></AddTaskForm>
-        </aside>
       </div>
     </div>
   );

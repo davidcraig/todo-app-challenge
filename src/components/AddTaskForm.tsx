@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import type { TaskFormProps } from "../Types/Task";
 
-export function AddTaskForm({ onAddTask }: TaskFormProps) {
+export function AddTaskForm({ onAddTask, defaultCategory }: TaskFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [newTask, setNewTask] = useState({
     title: "",
@@ -24,7 +24,7 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
   const resetForm = () => {
     setNewTask({
       title: "",
-      category: "work",
+      category: defaultCategory,
       completed: false,
     });
   };
@@ -51,6 +51,7 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
         <label>
           Task Description:
           <input
+            autoFocus={true}
             type="text"
             data-testid="add-task-component-description"
             className="input"

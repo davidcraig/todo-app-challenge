@@ -81,21 +81,13 @@
     }
 
     #layout-container {
-        @apply grid gap-4;
-        grid-template-columns: 8fr 2fr;
+        @apply grid gap-16;
+        grid-template-columns: 2fr 8fr;
     }
 
     @media (max-width: 768px) {
         #layout-container {
             grid-template-columns: 1fr;
-        }
-
-        #layout-container aside {
-            order: 1;
-        }
-
-        #layout-container main {
-            order: 2;
         }
     }
 }
