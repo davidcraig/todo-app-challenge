@@ -8,4 +8,5 @@ export type Task = {
 export type TaskFormProps = {
   onAddTask: (task: Task) => void;
   defaultCategory: string;
+  categories: string[];
 };

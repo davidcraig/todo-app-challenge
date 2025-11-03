@@ -1,7 +1,11 @@
 import { useState, useRef } from "react";
 import type { TaskFormProps } from "../Types/Task";
 
-export function AddTaskForm({ onAddTask, defaultCategory }: TaskFormProps) {
+export function AddTaskForm({
+  onAddTask,
+  defaultCategory,
+  categories,
+}: TaskFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [newTask, setNewTask] = useState({
     id: crypto.randomUUID(),
@@ -71,11 +75,11 @@ export function AddTaskForm({ onAddTask, defaultCategory }: TaskFormProps) {
             value={newTask.category}
             onChange={handleCategoryChange}
           >
-            <option value="finances">Finances</option>
-            <option value="household">Household</option>
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-            <option value="other">Other</option>
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
           </select>
         </label>
 

@@ -1,23 +1,28 @@
 import type { Task } from "../Types/Task";
 import binIcon from "../bin.svg";
 import ObjectSortByKeys from "../util/ObjectSortByKeys";
-
-function ucFirst(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
+import { ucFirst } from "../util/ucFirst";
 
 type TaskListProps = {
   tasks: Task[];
   toggleComplete: (id: string) => () => void;
   handleDelete: (id: string) => () => void;
+  selectedCategory: string;
 };
 
 export function TaskList({
   tasks,
   toggleComplete,
   handleDelete,
+  selectedCategory,
 }: TaskListProps) {
   // Group tasks by category
+  //
+
+  let filteredTasks =
+    selectedCategory !== "all"
+      ? tasks.filter((task) => task.category === selectedCategory)
+      : tasks;
 
   return (
     <>
@@ -31,7 +36,7 @@ export function TaskList({
           </tr>
         </thead>
         <tbody>
-          {tasks.map((task) => {
+          {filteredTasks.map((task) => {
             return (
               <tr
                 style={{
