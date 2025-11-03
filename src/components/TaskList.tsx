@@ -44,14 +44,15 @@ export function TaskList({
             <h2>{categoryTitle}</h2>
             <ul>
               {categoryTasks.map((task) => (
-                <li
-                  className="flex items-center"
-                  style={{
-                    textDecoration: task.completed ? "line-through" : "none",
-                  }}
-                  key={task.id}
-                >
-                  {task.description}
+                <li className="flex items-center" key={task.id}>
+                  <span
+                    style={{
+                      textDecoration: task.completed ? "line-through" : "none",
+                    }}
+                  >
+                    {task.description}
+                  </span>
+
                   <input
                     type="checkbox"
                     checked={task.completed}

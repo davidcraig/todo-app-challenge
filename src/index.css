@@ -51,6 +51,10 @@
         @apply w-full;
     }
 
+    label {
+        @apply my-2;
+    }
+
     input[type="checkbox"] {
         @apply ml-4;
     }
