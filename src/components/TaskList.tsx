@@ -53,11 +53,13 @@ export function TaskList({
 
                   <input
                     type="checkbox"
+                    data-testid={`complete-todo-checkbox-${task.id}`}
                     checked={task.completed}
                     onChange={toggleComplete(task.id)}
                   />
 
                   <button
+                    data-testid={`delete-todo-button-${task.id}`}
                     className="delete flex"
                     onClick={handleDelete(task.id)}
                   >
@@ -72,8 +74,6 @@ export function TaskList({
       })}
     </>
   );
-
-  return <div className=""></div>;
 }
 
 export default TaskList;
