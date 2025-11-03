@@ -1,11 +1,45 @@
 import "./index.css";
+import { useState, useEffect } from "react";
 import type { Task } from "./Types/Task";
 
 import AddTaskForm from "./components/AddTaskForm";
+import TaskList from "./components/TaskList";
+
+const TASKS_STORAGE_KEY = "tasks";
 
 export function App() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  function loadTasks() {
+    // Load tasks from API or local storage
+    const tasks = localStorage.getItem(TASKS_STORAGE_KEY);
+    if (tasks) {
+      const parsedTasks = JSON.parse(tasks);
+      // Process the parsed tasks as needed
+      if (parsedTasks.length > 0) {
+        setTasks(parsedTasks);
+      }
+    }
+  }
+
+  const toggleComplete = (id: string) => () => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task,
+    );
+    localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(updatedTasks));
+    setTasks(updatedTasks);
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, []);
+
   function onAddTask(task: Task) {
-    console.log(task);
+    task.id = crypto.randomUUID();
+    const newTasks = [...tasks, task];
+    localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(newTasks));
+
+    setTasks(newTasks);
   }
 
   return (
@@ -24,6 +58,8 @@ export function App() {
       >
         <main>
           <h1>Tasks</h1>
+
+          <TaskList tasks={tasks} toggleComplete={toggleComplete}></TaskList>
         </main>
 
         <aside>

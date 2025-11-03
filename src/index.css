@@ -3,6 +3,7 @@
 @layer base {
     :root {
         @apply text-[#131313] bg-[#ececec] font-sans;
+        --h2: #005aa4;
         --button-bg: #4299e1;
         --button-hover: #3182ce;
         --button-active-bg: #2c71b4;
@@ -31,7 +32,15 @@
     }
 
     input {
-        @apply border border-gray-300 w-full rounded-md px-2 py-1 mb-4;
+        @apply border border-gray-300 rounded-md px-2 py-1 mb-4;
+    }
+
+    :not(li) > input {
+        @apply w-full;
+    }
+
+    li > input {
+        @apply ml-4;
     }
 
     select {
@@ -40,5 +49,10 @@
 
     h1 {
         @apply text-2xl font-bold my-4;
+    }
+
+    h2 {
+        @apply text-xl font-semibold my-2;
+        color: var(--h2);
     }
 }
