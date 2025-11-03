@@ -1,5 +1,5 @@
 export type Task = {
-  id: string;
+  id: `${string}-${string}-${string}-${string}-${string}`;
   title: string;
   completed: boolean;
   category: string;

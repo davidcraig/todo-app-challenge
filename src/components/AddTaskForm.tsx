@@ -10,14 +10,14 @@ export function AddTaskForm({
   const [newTask, setNewTask] = useState({
     id: crypto.randomUUID(),
     title: "",
-    category: defaultCategory || categories[0],
+    category: defaultCategory,
     completed: false,
   });
 
   useEffect(() => {
     setNewTask((prev) => ({
       ...prev,
-      category: defaultCategory || categories[0],
+      category: defaultCategory,
     }));
   }, [defaultCategory, categories]);
 
@@ -88,16 +88,6 @@ export function AddTaskForm({
               </option>
             ))}
           </select>
-        </label>
-
-        <label>
-          Completed?:
-          <input
-            data-testid="add-task-component-completed-checkbox"
-            type="checkbox"
-            checked={newTask.completed}
-            onChange={handleCompletedChange}
-          />
         </label>
 
         <button

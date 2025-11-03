@@ -23,9 +23,9 @@ describe(App, () => {
   test("adds a task and saves to localStorage", () => {
     render(<App />);
 
-    const table = screen.getByTestId("task-list-body");
+    const tableBody = screen.getByTestId("task-list-body");
 
-    const tableInitialHtml = table.innerHTML;
+    const tableInitialHtml = tableBody.innerHTML;
 
     const input = screen.getByTestId("add-task-component-description");
 
@@ -38,8 +38,9 @@ describe(App, () => {
     fireEvent.change(categorySelect, { target: { value: "personal" } });
     fireEvent.click(submitButton);
 
-    expect(table.innerHTML).not.toEqual(tableInitialHtml);
-    expect(table.innerHTML).toContain("adds a task");
+    expect(tableBody.innerHTML).not.toEqual(tableInitialHtml);
+    expect(tableBody.innerHTML).toContain("adds a task");
+    expect(tableBody.innerHTML).toContain("Personal");
 
     const stored = JSON.parse(localStorage.getItem("tasks") || "[]");
     expect(stored.some((t: Task) => t.title === "adds a task")).toBe(true);
