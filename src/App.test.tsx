@@ -57,6 +57,8 @@ describe(App, () => {
   });
 
   test("deletes task and updates localStorage", () => {
+    // works in most Vitest versions:
+    global.confirm = vi.fn(() => true);
     const storedTasks: Task[] = [
       { id: "1", title: "Delete me", category: "work", completed: false },
     ];
