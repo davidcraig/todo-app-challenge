@@ -46,14 +46,14 @@ export function TaskList({
           <div key={category}>
             <h2>{categoryTitle}</h2>
             <ul>
-              {categoryTasks.map((task) => (
+              {categoryTasks.map((task: Task) => (
                 <li className="flex items-center" key={task.id}>
                   <span
                     style={{
                       textDecoration: task.completed ? "line-through" : "none",
                     }}
                   >
-                    {task.description}
+                    {task.title}
                   </span>
 
                   <input

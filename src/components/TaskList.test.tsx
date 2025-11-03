@@ -6,13 +6,13 @@ import type { Task } from "../Types/Task";
 const mockTasks: Task[] = [
   {
     id: "1",
-    description: "Buy milk",
+    title: "Buy milk",
     category: "personal",
     completed: false,
   },
   {
     id: "2",
-    description: "Finish report",
+    title: "Finish report",
     category: "work",
     completed: true,
   },

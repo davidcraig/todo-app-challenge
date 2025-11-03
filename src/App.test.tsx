@@ -10,8 +10,8 @@ describe(App, () => {
   });
 
   test("loads tasks from localStorage on mount", () => {
-    const storedTasks = [
-      { id: "1", description: "Test task", category: "work", completed: false },
+    const storedTasks: Task[] = [
+      { id: "1", title: "Test task", category: "work", completed: false },
     ];
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
 
@@ -35,12 +35,12 @@ describe(App, () => {
     fireEvent.click(submitButton);
 
     const stored = JSON.parse(localStorage.getItem("tasks") || "[]");
-    expect(stored.some((t: Task) => t.description === "New Task")).toBe(true);
+    expect(stored.some((t: Task) => t.title === "New Task")).toBe(true);
   });
 
   test("toggles task completion and updates localStorage", () => {
-    const storedTasks = [
-      { id: "1", description: "Toggle me", category: "work", completed: false },
+    const storedTasks: Task[] = [
+      { id: "1", title: "Toggle me", category: "work", completed: false },
     ];
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
 
@@ -57,8 +57,8 @@ describe(App, () => {
   });
 
   test("deletes task and updates localStorage", () => {
-    const storedTasks = [
-      { id: "1", description: "Delete me", category: "work", completed: false },
+    const storedTasks: Task[] = [
+      { id: "1", title: "Delete me", category: "work", completed: false },
     ];
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
 

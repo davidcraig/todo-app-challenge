@@ -4,7 +4,7 @@ import type { TaskFormProps } from "../Types/Task";
 export function AddTaskForm({ onAddTask }: TaskFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
   const [newTask, setNewTask] = useState({
-    description: "",
+    title: "",
     category: "work",
     completed: false,
   });
@@ -13,8 +13,8 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
     setNewTask({ ...newTask, completed: e.target.checked });
   };
 
-  const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewTask({ ...newTask, description: e.target.value });
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTask({ ...newTask, title: e.target.value });
   };
 
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -23,7 +23,7 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
 
   const resetForm = () => {
     setNewTask({
-      description: "",
+      title: "",
       category: "work",
       completed: false,
     });
@@ -55,8 +55,8 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
             data-testid="add-task-component-description"
             className="input"
             minLength={3}
-            value={newTask.description}
-            onChange={handleDescriptionChange}
+            value={newTask.title}
+            onChange={handleTitleChange}
           />
         </label>
 
