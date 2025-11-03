@@ -30,6 +30,12 @@ export function App() {
     setTasks(updatedTasks);
   };
 
+  const handleDelete = (id: string) => () => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(updatedTasks));
+    setTasks(updatedTasks);
+  };
+
   useEffect(() => {
     loadTasks();
   }, []);
@@ -59,7 +65,11 @@ export function App() {
         <main>
           <h1>Tasks</h1>
 
-          <TaskList tasks={tasks} toggleComplete={toggleComplete}></TaskList>
+          <TaskList
+            tasks={tasks}
+            toggleComplete={toggleComplete}
+            handleDelete={handleDelete}
+          ></TaskList>
         </main>
 
         <aside>

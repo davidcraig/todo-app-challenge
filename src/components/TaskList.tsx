@@ -1,4 +1,5 @@
 import type { Task } from "../Types/Task";
+import binIcon from "../bin.svg";
 
 function ucFirst(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -7,9 +8,14 @@ function ucFirst(str: string) {
 type TaskListProps = {
   tasks: Task[];
   toggleComplete: (id: string) => () => void;
+  handleDelete: (id: string) => () => void;
 };
 
-export function TaskList({ tasks, toggleComplete }: TaskListProps) {
+export function TaskList({
+  tasks,
+  toggleComplete,
+  handleDelete,
+}: TaskListProps) {
   // Group tasks by category
   const groupedTasks = tasks.reduce(
     (acc, task) => {
@@ -39,6 +45,7 @@ export function TaskList({ tasks, toggleComplete }: TaskListProps) {
             <ul>
               {categoryTasks.map((task) => (
                 <li
+                  className="flex items-center"
                   style={{
                     textDecoration: task.completed ? "line-through" : "none",
                   }}
@@ -50,6 +57,14 @@ export function TaskList({ tasks, toggleComplete }: TaskListProps) {
                     checked={task.completed}
                     onChange={toggleComplete(task.id)}
                   />
+
+                  <button
+                    className="delete flex"
+                    onClick={handleDelete(task.id)}
+                  >
+                    <img src={binIcon} alt="" />
+                    Delete todo
+                  </button>
                 </li>
               ))}
             </ul>

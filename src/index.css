@@ -31,12 +31,32 @@
         }
     }
 
-    input {
-        @apply border border-gray-300 rounded-md px-2 py-1 mb-4;
+    button.delete {
+        @apply focus:ring-[#420000] ml-4;
+
+        background: #420000;
+        &:hover {
+            background: #310000;
+        }
+        &:active {
+            background: #310000;
+        }
     }
 
-    :not(li) > input {
+    input {
+        @apply border border-gray-300 rounded-md;
+    }
+
+    input:not([type="checkbox"]) {
         @apply w-full;
+    }
+
+    input[type="checkbox"] {
+        @apply ml-4;
+    }
+
+    ul li {
+        @apply mb-4;
     }
 
     li > input {
