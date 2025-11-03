@@ -66,28 +66,32 @@ export function App() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-8 relative z-10">
-      <h1 className="text-5xl font-bold my-4 leading-tight">TODO App</h1>
+    <>
+      <header className="flex items-center shadow-xl py-4">
+        <h1 className="text-2xl ml-4 font-bold leading-tight">TODO App</h1>
+        <h2 className="text-xl ml-8 font-bold">Organise your day!</h2>
+      </header>
+      <div className="mx-auto p-8 relative z-10">
+        <div id="layout-container">
+          <aside aria-label="Add Task Form">
+            <AddTaskForm
+              onAddTask={onAddTask}
+              defaultCategory={defaultCategory}
+            ></AddTaskForm>
+          </aside>
 
-      <div id="layout-container">
-        <aside aria-label="Add Task Form">
-          <AddTaskForm
-            onAddTask={onAddTask}
-            defaultCategory={defaultCategory}
-          ></AddTaskForm>
-        </aside>
+          <main aria-labelledby="task-list-heading">
+            <h1 id="task-list-heading">Tasks</h1>
 
-        <main aria-labelledby="task-list-heading">
-          <h1 id="task-list-heading">Task List</h1>
-
-          <TaskList
-            tasks={tasks}
-            toggleComplete={toggleComplete}
-            handleDelete={handleDelete}
-          ></TaskList>
-        </main>
+            <TaskList
+              tasks={tasks}
+              toggleComplete={toggleComplete}
+              handleDelete={handleDelete}
+            ></TaskList>
+          </main>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

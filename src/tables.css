@@ -1,15 +1,14 @@
-@layer base {
-    :root {
-        --table-border-radius: 0.4rem;
-    }
+@import "tailwindcss";
 
+@layer base {
     table {
-        @apply w-full;
+        @apply w-full shadow-md;
     }
 
     th {
         text-align: left;
         background: var(--primary-color);
+        color: #ececec;
         padding: 0.5rem 0;
 
         &:first-child {
@@ -21,12 +20,6 @@
     }
 
     thead tr th {
-        &:first-child {
-            border-top-left-radius: var(--table-border-radius);
-        }
-        &:last-child {
-            border-top-right-radius: var(--table-border-radius);
-        }
         overflow: hidden;
     }
 
@@ -34,13 +27,19 @@
     td {
     }
 
-    tr {
-        &:first-of-type(td) {
-            padding-left: 0.5rem;
+    tbody {
+        tr {
+            td:nth-of-type(1) {
+                padding-left: 0.5rem !important;
+            }
         }
     }
 
     td {
         background: #fff;
+    }
+
+    tbody tr:nth-of-type(even) td {
+        background: #eee !important;
     }
 }

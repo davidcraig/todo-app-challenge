@@ -1,17 +1,33 @@
 @import "tailwindcss";
 @import "./tables.css";
 
+@layer base, components;
+
 @layer base {
     :root {
         @apply text-[#131313] bg-[#ececec] font-sans;
         --h2: #005aa4;
-        --primary-color: #4299e1;
+        --primary-color: #005eb8;
         --secondary-color: #3182ce;
         --button-active-bg: #2c71b4;
+        --button-primary-color: #007f3b;
+        --button-shadow-color: #00401e;
     }
 
     body {
         @apply grid min-w-[320px] min-h-screen relative m-0;
+        color: #131313;
+    }
+
+    header {
+        background: var(--primary-color);
+        color: #fff;
+
+        & h1,
+        & h2 {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
     }
 }
 
@@ -21,14 +37,14 @@
     }
 
     button.save {
-        @apply focus:ring-[#4299e1];
+        @apply focus:ring-[#007f3b];
 
-        background: var(--primary-color);
+        background: var(--button-primary-color);
         &:hover {
-            background: var(--secondary-color);
+            background: var(--button-shadow-color);
         }
         &:active {
-            background: var(--primary-color);
+            background: var(--button-shadow-color);
         }
     }
 
@@ -45,7 +61,7 @@
     }
 
     input {
-        @apply border border-gray-300 rounded-md;
+        @apply border border-gray-300 rounded-md p-2;
     }
 
     input:not([type="checkbox"]) {
@@ -73,17 +89,17 @@
     }
 
     h1 {
-        @apply text-2xl font-bold my-4;
+        @apply text-2xl font-bold mb-4;
     }
 
-    h2 {
+    main h2 {
         @apply text-xl font-semibold my-2;
         color: var(--h2);
     }
 
     #layout-container {
         @apply grid gap-16;
-        grid-template-columns: 2fr 8fr;
+        grid-template-columns: 300px 1fr;
     }
 
     @media (max-width: 768px) {
@@ -93,6 +109,7 @@
     }
 
     /* TaskList */
+
     .actions {
         width: 5em;
     }

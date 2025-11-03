@@ -46,7 +46,7 @@ export function AddTaskForm({ onAddTask, defaultCategory }: TaskFormProps) {
   };
 
   return (
-    <div id="add-task-form">
+    <div id="add-task-form" className="shadow-2xl border p-4">
       <h1>Add Task</h1>
 
       <form className="flex flex-col" ref={formRef} onSubmit={handleSubmit}>
