@@ -27,8 +27,6 @@ export function TaskList({
     {} as Record<string, Task[]>,
   );
 
-  console.log(groupedTasks);
-
   if (!groupedTasks) return null;
 
   return (
