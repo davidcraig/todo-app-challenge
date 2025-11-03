@@ -67,6 +67,7 @@ export function App() {
     localStorage.setItem(DEFAULT_CATEGORY_KEY, task.category);
     localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(newTasks));
 
+    setDefaultCategory(task.category);
     setTasks(newTasks);
   }
 

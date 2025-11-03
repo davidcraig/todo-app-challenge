@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { TaskFormProps } from "../Types/Task";
 
 export function AddTaskForm({
@@ -10,9 +10,16 @@ export function AddTaskForm({
   const [newTask, setNewTask] = useState({
     id: crypto.randomUUID(),
     title: "",
-    category: "work",
+    category: defaultCategory || categories[0],
     completed: false,
   });
+
+  useEffect(() => {
+    setNewTask((prev) => ({
+      ...prev,
+      category: defaultCategory || categories[0],
+    }));
+  }, [defaultCategory, categories]);
 
   const handleCompletedChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTask({ ...newTask, completed: e.target.checked });
