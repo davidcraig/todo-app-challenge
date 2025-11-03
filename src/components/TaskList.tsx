@@ -43,8 +43,11 @@ export function TaskList({
         if (!categoryTasks || !categoryTasks.length) return null;
 
         return (
-          <div key={category}>
-            <h2>{categoryTitle}</h2>
+          <div
+            aria-label={`${categoryTitle} Category Todo Items`}
+            key={category}
+          >
+            <h2 id={`${category}-category`}>{categoryTitle}</h2>
             <ul>
               {categoryTasks.map((task: Task) => (
                 <li className="flex items-center" key={task.id}>
@@ -61,15 +64,16 @@ export function TaskList({
                     data-testid={`complete-todo-checkbox-${task.id}`}
                     checked={task.completed}
                     onChange={toggleComplete(task.id)}
+                    aria-label={`Complete todo ${task.title}`}
                   />
 
                   <button
                     data-testid={`delete-todo-button-${task.id}`}
                     className="delete flex"
                     onClick={handleDelete(task.id)}
+                    aria-label={`Delete todo ${task.title}`}
                   >
-                    <img src={binIcon} alt="" />
-                    Delete todo
+                    <img src={binIcon} alt={`Delete todo ${task.title}`} />
                   </button>
                 </li>
               ))}

@@ -31,6 +31,12 @@ export function App() {
   };
 
   const handleDelete = (id: string) => () => {
+    const confirmedDelete = window.confirm(
+      `Are you sure you want to delete this task?`,
+    );
+
+    if (!confirmedDelete) return;
+
     const updatedTasks = tasks.filter((task) => task.id !== id);
     localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(updatedTasks));
     setTasks(updatedTasks);
@@ -50,13 +56,11 @@ export function App() {
 
   return (
     <div className="max-w-7xl mx-auto p-8 relative z-10">
-      <div className="flex gap-8 mb-8"></div>
-
       <h1 className="text-5xl font-bold my-4 leading-tight">TODO App</h1>
 
       <div id="layout-container">
-        <main>
-          <h1>Task List</h1>
+        <main aria-labelledby="task-list-heading">
+          <h1 id="task-list-heading">Task List</h1>
 
           <TaskList
             tasks={tasks}
@@ -65,7 +69,7 @@ export function App() {
           ></TaskList>
         </main>
 
-        <aside>
+        <aside aria-label="Add Task Form">
           <AddTaskForm onAddTask={onAddTask}></AddTaskForm>
         </aside>
       </div>
