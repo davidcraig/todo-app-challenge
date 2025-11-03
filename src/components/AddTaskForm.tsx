@@ -67,10 +67,10 @@ export function AddTaskForm({ onAddTask }: TaskFormProps) {
             value={newTask.category}
             onChange={handleCategoryChange}
           >
-            <option value="work">Work</option>
-            <option value="personal">Personal</option>
             <option value="finances">Finances</option>
             <option value="household">Household</option>
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
             <option value="other">Other</option>
           </select>
         </label>

@@ -1,5 +1,6 @@
 import type { Task } from "../Types/Task";
 import binIcon from "../bin.svg";
+import ObjectSortByKeys from "../util/ObjectSortByKeys";
 
 function ucFirst(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -17,15 +18,19 @@ export function TaskList({
   handleDelete,
 }: TaskListProps) {
   // Group tasks by category
-  const groupedTasks = tasks.reduce(
-    (acc, task) => {
-      const category = task.category;
-      acc[category] = acc[category] || [];
-      acc[category].push(task);
-      return acc;
-    },
-    {} as Record<string, Task[]>,
+  const groupedTasks = ObjectSortByKeys(
+    tasks.reduce(
+      (acc, task) => {
+        const category = task.category;
+        acc[category] = acc[category] || [];
+        acc[category].push(task);
+        return acc;
+      },
+      {} as Record<string, Task[]>,
+    ),
   );
+
+  console.log(groupedTasks);
 
   if (!groupedTasks) return null;
 
