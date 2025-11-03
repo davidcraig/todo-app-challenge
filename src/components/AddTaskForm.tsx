@@ -55,7 +55,7 @@ export function AddTaskForm({
 
       <form className="flex flex-col" ref={formRef} onSubmit={handleSubmit}>
         <label>
-          Task Description:
+          Task Title:
           <input
             autoFocus={true}
             type="text"
