@@ -30,6 +30,12 @@ To run for production:
 bun start
 ```
 
+To run tests
+
+```bash
+bun test
+```
+
 # Hosted Demo
 
 [TODO App Netlify](https://dc-todo-app-challenge.netlify.app/)
