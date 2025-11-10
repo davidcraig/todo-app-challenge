@@ -11,7 +11,12 @@ describe(App, () => {
 
   test("loads tasks from localStorage on mount", () => {
     const storedTasks: Task[] = [
-      { id: "1", title: "Test task", category: "work", completed: false },
+      {
+        id: "1-1-1-1-1",
+        title: "Test task",
+        category: "work",
+        completed: false,
+      },
     ];
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
 
@@ -48,7 +53,12 @@ describe(App, () => {
 
   test("toggles task completion and updates localStorage", () => {
     const storedTasks: Task[] = [
-      { id: "1", title: "Toggle me", category: "work", completed: false },
+      {
+        id: "1-1-1-1-1",
+        title: "Toggle me",
+        category: "work",
+        completed: false,
+      },
     ];
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
 
@@ -68,7 +78,12 @@ describe(App, () => {
     // works in most Vitest versions:
     global.confirm = vi.fn(() => true);
     const storedTasks: Task[] = [
-      { id: "1", title: "Delete me", category: "work", completed: false },
+      {
+        id: "1-1-1-1-1",
+        title: "Delete me",
+        category: "work",
+        completed: false,
+      },
     ];
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
 
